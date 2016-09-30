@@ -22,7 +22,99 @@
 
   <body>
 
-    <%= yield %>
+    <div class="row">
+      <div class="large-12 columns">
+
+        <!-- Navigation -->
+
+        <div class="row">
+          <div class="large-12 columns">
+
+            <nav class="top-bar">
+              <ul class="title-area">
+                <!-- Title Area -->
+                <li class="name">
+                  <h1><a href="/">Bookmarks</a></h1>
+                </li>
+              </ul>
+
+              <section class="top-bar-section">
+                <!-- Right Nav Section -->
+                <ul class="right">
+                  <li class="divider"></li>
+                  <% if current_user %>
+                    <li><%= link_to 'My Bookmarks', bookmarks_path %></li>
+                    <li class="divider"></li>
+
+                    <li class="has-dropdown">
+                      <%= link_to current_user.email, '#'%>
+                      <ul class="dropdown">
+                        <li><%= link_to 'Profile', edit_user_registration_path %></li>
+                        <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+                        <li class="divider"></li>
+                      </ul>
+                    </li>
+                  <% else %>
+                    <li><%= link_to 'Login', new_user_session_path %></li>
+                    <li><%= link_to 'Register', new_user_registration_path %></li>
+                  <% end %>
+                </ul>
+              </section>
+            </nav>
+            <!-- End Top Bar -->
+          </div>
+        </div>
+        <!-- End Navigation -->
+
+        <!-- Flash messages -->
+        <div class="row">
+          <div class="large-12 columns">
+            <% if flash[:notice] %>
+              <div data-alert class="alert-box success">
+                <a href="#" class="close">&times;</a>
+                <%= flash[:notice] %>
+              </div>
+            <% end %>
+
+            <% if flash[:alert] %>
+              <div data-alert class="alert-box alert">
+                <a href="#" class="close">&times;</a>
+                <%= flash[:alert] %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <!-- End Flash messages -->
+
+        <!-- Content -->
+        <div class="row">
+          <div class="large-12 columns">
+            <%= yield %>
+          </div>
+        </div>
+        <!-- End Content -->
+
+        <!-- Footer -->
+        <footer class="row">
+          <div class="large-12 columns"><hr />
+            <div class="row">
+              <div class="large-6 columns">
+                <p>&copy; Copyright no one at all.</p>
+              </div>
+
+              <div class="large-6 columns">
+                <ul class="inline-list right">
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">Etc..</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </footer>
+        <!-- End Footer -->
+
+      </div>
+    </div>
 
     
     <%= javascript_include_tag "application" %>

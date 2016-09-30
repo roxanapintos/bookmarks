@@ -1,14 +1,40 @@
 <h1>Site#index</h1>
-<h2>Lastest Bookmarks</h2>
-<table style="width:100%">
-	<thead>
-		<tr>URL</tr>
-	</thead>
-	<tbody>
-		<% @bookmarks.each do |bookmark| %>
-		<tr>
-			<td><%= link_to bookmark.title, bookmark.url %></td>
-		</tr>
-		<% end %>
-	</tbody>
-</table>
+
+<% if current_user %>
+	<h2>Latest Bookmarks</h2>
+	<table style="width:100%">
+		<thead>
+			<tr>URL</tr>
+		</thead>
+		<tbody>
+			<% @bookmarks.each do |bookmark| %>
+			<tr>
+				<td><%= link_to bookmark.title, bookmark.url %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+<% else %>
+	<div class="panel">
+		<h1>Share your bookmarks!</h1>
+	    <p>A simple app to track and share your beloved bookmarks with others.</p>
+	    <%= link_to "Get started today", new_user_registration_path, :class => "button button-large" %>
+	</div>
+
+	<hr>
+
+	<div class="row">
+	    <div class="large-8 columns">
+	      <h3>Introduction</h3>
+	      <p>
+	      A simple web application to manage and share bookmarks
+	      </p>	      
+	    </div>
+	    <div class="large-4 columns">
+	      <h3>About this app</h3>
+	      <p>Rails 4 tutorial application developed by <a href="http://andreapavoni.com/blog/2013/8/a-rails-4-tutorial-application-for-beginners/#.V-5UlnV970o" target="_blank">Andrea Pavoni</a></p>
+	    </div>
+  	</div>
+
+<% end %>
