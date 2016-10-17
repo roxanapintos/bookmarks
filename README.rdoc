@@ -1,3 +1,3 @@
 == A simple web application to manage and share bookmarks
 
-Rails 4 tutorial application developed by Andrea Pavoni here: [http://andreapavoni.com/blog/2013/8/a-rails-4-tutorial-application-for-beginners/#.V-5UlnV970o]. (http://andreapavoni.com/blog/2013/8/a-rails-4-tutorial-application-for-beginners/#.V-5UlnV970o)
+Rails 4 tutorial application developed by Andrea Pavoni here: http://andreapavoni.com/blog/2013/8/a-rails-4-tutorial-application-for-beginners/#.V-5UlnV970o
