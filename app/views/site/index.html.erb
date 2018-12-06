@@ -2,18 +2,28 @@
 
 <% if current_user %>
 	<h2>Latest Bookmarks</h2>
-	<table style="width:100%">
-		<thead>
-			<tr>URL</tr>
-		</thead>
-		<tbody>
-			<% @bookmarks.each do |bookmark| %>
-			<tr>
-				<td><%= link_to bookmark.title, bookmark.url %></td>
-			</tr>
-			<% end %>
-		</tbody>
-	</table>
+	<% if @bookmarks.blank? %>
+		<h3>You don't have bookmarks yet</h3>
+		<br>
+		<%= link_to 'New Bookmark', new_bookmark_path %>
+	<% else %>
+		<table style="width:100%">
+			<thead>
+				<tr>
+					<th>URL</th>
+					<th>User</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @bookmarks.each do |bookmark| %>
+				<tr>
+					<td><%= link_to bookmark.title, bookmark.url, :target => "blank" %></td>
+					<td><%= link_to bookmark.user.email%></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	<% end %>
 
 <% else %>
 	<div class="panel">
@@ -29,7 +39,7 @@
 	      <h3>Introduction</h3>
 	      <p>
 	      A simple web application to manage and share bookmarks
-	      </p>	      
+	      </p>
 	    </div>
 	    <div class="large-4 columns">
 	      <h3>About this app</h3>
